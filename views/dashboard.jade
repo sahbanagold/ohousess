@@ -1,0 +1,81 @@
+extends layout
+
+block content
+  // Shopping Cart table
+  img.img-fluid(src='http://i.imgur.com/bggR8FB.png', alt='' style='height:70px') 
+  div#insert(style='display:none')  
+    .modal-header
+      button.close(type='button', data-dismiss='modal', aria-label='Close')
+        span(aria-hidden='true') ×
+      h3#myModalLabel.modal-title Insert New Stock :
+    // Body
+    form
+        .form-group
+          i.fa.fa-tag.prefix
+          input#formnama.form-control(type='text', name='nama_barang')
+        .form-group
+          i.fa.fa-picture-o.prefix
+          input#formphoto.form-control(type='text', name='photo')
+        .form-group
+          i.fa.fa-usd.prefix
+          input#formharga.form-control(type='text', name='harga')
+        .form-group
+          i.fa.fa-align-justify.prefix
+          input#formjumlah.form-control(type='text', name='jumlah')
+        button.btn.btn-primary(type='button',onclick='insert_stock()') Save
+        a.btn.btn-secondary(type='button',href='/stocks') Cancel
+  div#update(style='display:none')  
+    .modal-header
+      button.close(type='button', data-dismiss='modal', aria-label='Close')
+        span(aria-hidden='true') ×
+      h3#myModalLabel.modal-title Update Stock :
+    // Body
+    form
+        .form-group
+          i.fa.fa-tag.prefix
+          input#formnamaupdate.form-control(type='text', name='nama_barang')
+        .form-group
+          i.fa.fa-picture-o.prefix
+          input#formphotoupdate.form-control(type='text', name='photo')
+        .form-group
+          i.fa.fa-usd.prefix
+          input#formhargaupdate.form-control(type='text', name='harga')
+        .form-group
+          i.fa.fa-align-justify.prefix
+          input#formjumlahupdate.form-control(type='text', name='jumlah')
+        button.btn.btn-primary(type='button',onclick='update_stock_ajax()') Save
+        a.btn.btn-secondary(type='button',onclick='hideupdate()') Cancel
+  a.btn.btn-danger.waves-effect.waves-light(onclick='showinsert()') tambah
+  .table-responsive
+  table.table.product-table
+    // Table head
+    thead
+      tr
+        th
+        th Product
+        th Price
+        th QTY
+        th
+    // /Table head
+    // Table body
+    tbody#stock_table
+    
+      // /First row
+    // /Table body
+  // /Shopping Cart table
+  
+
+  section#advanced
+    h2.doc-title
+      | Stock Over Flow
+      a.btn.btn-danger.waves-effect.waves-light(target='_blank', href='#') Go International
+    // Footer
+    footer.page-footer.center-on-small-only
+      .footer-copyright
+        .container-fluid
+          | © 2016 Copyright:
+          a(href='http://www.stockoverflow.com')  stockoverflow.com
+
+  block script
+  block ready  
+  block ajaxscript
